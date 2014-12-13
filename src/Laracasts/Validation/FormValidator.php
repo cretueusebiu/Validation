@@ -58,7 +58,7 @@ abstract class FormValidator {
 	 */
 	public function getValidationRules()
 	{
-		return $this->rules;
+		return isset($this->rules) ? $this->rules : $this->rules();
 	}
 
 	/**
