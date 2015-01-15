@@ -75,7 +75,7 @@ abstract class FormValidator {
 	 */
 	public function getValidationMessages()
 	{
-		return $this->messages;
+		return method_exists($this, 'messages') ? $this->messages() : $this->messages;
 	}
 
 	/**
