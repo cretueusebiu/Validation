@@ -41,7 +41,7 @@ abstract class FormValidator {
 
 		$this->validation = $this->validator->make(
 			$formData,
-			$this->getValidationRules(),
+			$this->getValidationRules($formData),
 			$this->getValidationMessages()
 		);
 
@@ -54,11 +54,12 @@ abstract class FormValidator {
 	}
 
 	/**
+	 * @param  mixed
 	 * @return array
 	 */
-	public function getValidationRules()
+	public function getValidationRules($formData = null)
 	{
-		return isset($this->rules) ? $this->rules : $this->rules();
+		return method_exists($this, 'rules') ? $this->rules($this->formData) : $this->rules;
 	}
 
 	/**
