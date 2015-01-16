@@ -59,7 +59,7 @@ abstract class FormValidator {
 	 */
 	public function getValidationRules($formData = null)
 	{
-		return method_exists($this, 'rules') ? $this->rules($this->formData) : $this->rules;
+		return method_exists($this, 'rules') ? $this->rules($formData) : $this->rules;
 	}
 
 	/**
